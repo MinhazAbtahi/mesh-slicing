@@ -9,6 +9,8 @@ namespace BzKovSoft.ObjectSlicerSamples
 	/// </summary>
 	public class BzKnife : MonoBehaviour
 	{
+        public PlayerController playerController;
+
 		public int SliceID { get; private set; }
 		Vector3 _prevPos;
 		Vector3 _pos;
@@ -41,5 +43,13 @@ namespace BzKovSoft.ObjectSlicerSamples
 		{
 			SliceID = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
 		}
-	}
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "Object")
+            {
+                playerController.currentSpeed = 5f;
+            }
+        }
+    }
 }

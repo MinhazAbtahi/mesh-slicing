@@ -18,15 +18,23 @@ public class PlayerController : MonoBehaviour
     [Space(5)]
     [Header("Cotroller Values:")]
     [SerializeField]
-    private float maxY = 10.5f;
+    private float maxY = 10.50f;
     [SerializeField]
-    private float minY = 7.5f;
+    private float minY = 7.55f;
     [SerializeField]
     private float duration = .5f;
     private bool gone;
+    private float moveY;
+    [SerializeField]
+    private float speed = 10f;
+    [SerializeField]
+    public float currentSpeed;
+    [SerializeField]
+    private float smoothing = 0.05f;
 
     private void Start()
     {
+        currentSpeed = speed;
         bladeTransform = _blade.transform;
         knife = _blade.GetComponentInChildren<BzKnife>();
     }
@@ -56,12 +64,23 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             //knife.BeginNewSlice();
-
-            KnifeDown();
+            float y = Input.GetAxis("Mouse Y");
+            moveY = Mathf.Lerp(moveY, y, smoothing);
+            Vector3 deviation = new Vector3(0f, moveY * Time.deltaTime * currentSpeed, 0f);
+            bladeTransform.position += deviation;
+            if (bladeTransform.position.y > 10.5f)
+            {
+                bladeTransform.position = new Vector3(bladeTransform.position.x, maxY, bladeTransform.position.z);
+            }
+            else if (bladeTransform.position.y < 7.6f)
+            {
+                bladeTransform.position = new Vector3(bladeTransform.position.x, minY, bladeTransform.position.z);
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
+            currentSpeed = speed;
             KnifeUp();
         }
     }

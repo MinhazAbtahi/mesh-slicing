@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 389101426}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1327,7 +1327,7 @@ GameObject:
   - component: {fileID: 600115967}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1639,7 +1639,7 @@ GameObject:
   - component: {fileID: 960689095}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2529,7 +2529,7 @@ GameObject:
   - component: {fileID: 1402993366}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3031,6 +3031,9 @@ MonoBehaviour:
   maxY: 10.5
   minY: 7.5
   duration: 1
+  speed: 10
+  currentSpeed: 10
+  smoothing: 1
 --- !u!1 &1943423686
 GameObject:
   m_ObjectHideFlags: 0
@@ -3546,5 +3549,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knife
       objectReference: {fileID: 0}
+    - target: {fileID: 7633312221373486860, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1700079100}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 281738528392d27499aadbecae17d04a, type: 3}
