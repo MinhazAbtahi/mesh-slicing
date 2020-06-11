@@ -78,7 +78,7 @@ public class ObjectManager : MonoBehaviour
             PlayerPrefs.SetInt("LevelsCount", levelsCount);
         }
 
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(0f);
         isMoving = true;
         sliceObject.transform.DOMoveX(targetPositionX, 2f).OnComplete(()=>
         {

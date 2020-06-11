@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
     private void KnifeUp()
     {
         bladeTransform.DOKill();
-        bladeTransform.DOMoveY(maxY, duration/2f).OnComplete(()=>
+        bladeTransform.DOMoveY(maxY, duration/2f).SetEase(Ease.OutBack).OnComplete(()=>
         {
             objectManager.MoveForward();
         });
