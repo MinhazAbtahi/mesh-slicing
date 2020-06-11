@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public float currentSpeed;
     [SerializeField]
     private float smoothing = 0.05f;
+    private bool firsMove;
 
     private void Start()
     {
@@ -58,7 +59,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            //objectManager.MoveForward();
+            if(!firsMove)
+            {
+                firsMove = true;
+                objectManager.MoveForward();
+            }
         }
 
         if (Input.GetMouseButton(0))
