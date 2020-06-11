@@ -35,6 +35,7 @@ public class ObjectManager : MonoBehaviour
         sliceObject.transform.DOMoveX(targetPositionX, 1f).OnComplete(()=>
         {
             sliceObject.GetComponent<RubberEffect>().enabled = true;
+            //sliceObject.GetComponent<RubberEffect>()
             isGameStart = true;
         });
         step = sliceObject.transform.localScale.x / 3f;

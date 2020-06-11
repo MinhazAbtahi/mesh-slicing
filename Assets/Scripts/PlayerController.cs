@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             //knife.BeginNewSlice();
+
             float y = Input.GetAxis("Mouse Y");
             moveY = Mathf.Lerp(moveY, y, smoothing);
             Vector3 deviation = new Vector3(0f, moveY * Time.deltaTime * currentSpeed, 0f);

@@ -129,7 +129,7 @@ namespace JellyCube
             WakeUp();
         }
 
-        void WakeUp()
+        public void WakeUp()
         {
             for (int i = 0; i < vr.Length; i++)
             {
