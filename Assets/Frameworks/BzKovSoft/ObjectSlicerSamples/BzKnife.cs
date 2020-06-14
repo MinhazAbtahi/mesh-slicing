@@ -49,7 +49,7 @@ namespace BzKovSoft.ObjectSlicerSamples
             if (other.tag == "Object")
             {
                 playerController.objectManager.StopMoving();
-                playerController.currentSpeed = 5f;
+                //playerController.currentSpeed = playerController.currentSpeed / 2;
             }
         }
     }

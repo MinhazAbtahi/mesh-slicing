@@ -45,8 +45,16 @@ namespace BzKovSoft.ObjectSlicer
 			var cldrsA = new List<Collider>();
 			var cldrsB = new List<Collider>();
 			RepairColliders(resultObjNeg, resultObjPos, cldrsA, cldrsB);
-            RepairRigidbody(resultObjNeg);
+            //RepairRigidbody(resultObjNeg);
+            AddModifier(resultObjNeg);
+        }
 
+        private void AddModifier(GameObject resultObjNeg)
+        {
+            //resultObjNeg.AddComponent<MegaModifier>();
+            MeshBend bend = resultObjNeg.AddComponent<MeshBend>();
+            bend.axis = BendAxis.Z;
+            //bend.angle = -90f;
         }
 
         private void RepairRigidbody(GameObject resultObjNeg)

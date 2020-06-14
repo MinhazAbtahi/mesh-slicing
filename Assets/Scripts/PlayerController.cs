@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             if (!gone)
             {
                 gone = true;
-                bladeTransform.DOMoveY(maxY * 2, duration * 2);
+                bladeTransform.DOMoveY(maxY * 2, duration * 2).SetEase(Ease.InBack);
             }
             return;
         }
