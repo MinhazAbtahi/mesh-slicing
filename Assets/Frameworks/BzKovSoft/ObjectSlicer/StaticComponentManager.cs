@@ -45,7 +45,7 @@ namespace BzKovSoft.ObjectSlicer
 			var cldrsA = new List<Collider>();
 			var cldrsB = new List<Collider>();
 			RepairColliders(resultObjNeg, resultObjPos, cldrsA, cldrsB);
-            //RepairRigidbody(resultObjNeg);
+            RepairRigidbody(resultObjNeg);
             AddModifier(resultObjNeg);
         }
 
@@ -54,7 +54,8 @@ namespace BzKovSoft.ObjectSlicer
             //resultObjNeg.AddComponent<MegaModifier>();
             MeshBend bend = resultObjNeg.AddComponent<MeshBend>();
             bend.axis = BendAxis.Z;
-            //bend.angle = -90f;
+            
+            // TO-DO: Procedurally bend angles based on knife input 
         }
 
         private void RepairRigidbody(GameObject resultObjNeg)
