@@ -45,7 +45,7 @@ namespace BzKovSoft.ObjectSlicer
 			var cldrsA = new List<Collider>();
 			var cldrsB = new List<Collider>();
 			RepairColliders(resultObjNeg, resultObjPos, cldrsA, cldrsB);
-            RepairRigidbody(resultObjNeg);
+            //RepairRigidbody(resultObjNeg);
 
         }
 
