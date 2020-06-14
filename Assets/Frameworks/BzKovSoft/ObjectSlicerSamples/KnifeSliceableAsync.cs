@@ -35,7 +35,7 @@ namespace BzKovSoft.ObjectSlicerSamples
 			// The call from OnTriggerEnter, so some object positions are wrong.
 			// We have to wait for next frame to work with correct values
 			//yield return null;
-			yield return new WaitForSeconds(.25f);
+			yield return new WaitForSeconds(.1f);
 
 			Vector3 point = GetCollisionPoint(knife);
 			Vector3 normal = Vector3.Cross(knife.MoveDirection, knife.BladeDirection);

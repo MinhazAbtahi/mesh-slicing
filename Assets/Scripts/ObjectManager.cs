@@ -17,7 +17,7 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     private float step;
     private bool isMoving;
-    private int totalMove = 0;
+    public int totalMove = 0;
     public bool isGameOver;
     public bool isGameStart;
     public int levelsCount = 0;
@@ -35,9 +35,10 @@ public class ObjectManager : MonoBehaviour
         sliceObject.transform.DOMoveX(targetPositionX, 1f).OnComplete(()=>
         {
             sliceObject.GetComponent<RubberEffect>().enabled = true;
+            //sliceObject.GetComponent<RubberEffect>()
             isGameStart = true;
         });
-        step = sliceObject.transform.localScale.x / 3f;
+        step = sliceObject.transform.localScale.x / 5f;
     }
 
     // Update is called once per frame
@@ -48,7 +49,7 @@ public class ObjectManager : MonoBehaviour
 
     public void MoveForward()
     {
-        if (totalMove <= 2)
+        if (totalMove <= 5)
         {
             targetPositionX += step;
             //targetPositionX += sliceObject.transform.localScale.x;
@@ -58,21 +59,14 @@ public class ObjectManager : MonoBehaviour
 
     public void StopMoving()
     {
-        StopAllCoroutines();
+        sliceObject.transform.DOKill();
+        //StopAllCoroutines();
     }
 
     private IEnumerator MoveRoutine()
     {
-        yield return new WaitForSeconds(.1f);
-        isMoving = true;
-        sliceObject.transform.DOMoveX(targetPositionX, 1f).OnComplete(()=>
-        {
-            ui.SetActive(isGameOver);
-        });
-
         ++totalMove;
-
-        if (totalMove >= 3)
+        if (totalMove >= 6)
         {
             isGameStart = false;
             isGameOver = true;
@@ -83,6 +77,13 @@ public class ObjectManager : MonoBehaviour
             }
             PlayerPrefs.SetInt("LevelsCount", levelsCount);
         }
+
+        yield return new WaitForSeconds(.25f);
+        isMoving = true;
+        sliceObject.transform.DOMoveX(targetPositionX, 2f).OnComplete(()=>
+        {
+            ui.SetActive(isGameOver);
+        });
     }
 
     public void Reload()

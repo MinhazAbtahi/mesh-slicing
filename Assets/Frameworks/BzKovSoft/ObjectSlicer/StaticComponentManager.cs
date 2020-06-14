@@ -46,7 +46,14 @@ namespace BzKovSoft.ObjectSlicer
 			var cldrsB = new List<Collider>();
 			RepairColliders(resultObjNeg, resultObjPos, cldrsA, cldrsB);
             //RepairRigidbody(resultObjNeg);
+			AddModifier();
 
+        private void AddModifier(GameObject resultObjNeg)
+        {
+            //resultObjNeg.AddComponent<MegaModifier>();
+            MeshBend bend = resultObjNeg.AddComponent<MeshBend>();
+            bend.axis = BendAxis.Z;
+            //bend.angle = -90f;
         }
 
         private void RepairRigidbody(GameObject resultObjNeg)
@@ -54,6 +61,7 @@ namespace BzKovSoft.ObjectSlicer
             Rigidbody resultNegRigidbody = resultObjNeg.GetComponent<Rigidbody>();
             resultNegRigidbody.isKinematic = false;
             resultNegRigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            //resultObjNeg.AddComponent<JellyCube.RubberEffect>();
             //resultNegRigidbody.AddForceAtPosition(Vector3.right * 2.5f, -Vector3.down * 2f, ForceMode.VelocityChange);
         }
 
