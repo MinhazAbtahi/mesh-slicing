@@ -32,21 +32,16 @@ public class ObjectManager : MonoBehaviour
         sliceObject.transform.position = new Vector3(0f, sliceObject.transform.position.y, 0f);
         sliceObject.SetActive(true);
 
-        sliceObject.transform.DOMoveX(targetPositionX, 1f).OnComplete(()=>
+        sliceObject.transform.DOMoveX(targetPositionX, 0).OnComplete(()=>
         {
-            sliceObject.GetComponent<RubberEffect>().enabled = true;
+            //sliceObject.GetComponent<RubberEffect>().enabled = true;
             //sliceObject.GetComponent<RubberEffect>()
             isGameStart = true;
         });
         step = sliceObject.transform.localScale.x / 5f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+   
     public void MoveForward()
     {
         if (totalMove <= 5)
@@ -54,6 +49,7 @@ public class ObjectManager : MonoBehaviour
             targetPositionX += step;
             //targetPositionX += sliceObject.transform.localScale.x;
             StartCoroutine(MoveRoutine());
+
         }
     }
 
@@ -80,7 +76,7 @@ public class ObjectManager : MonoBehaviour
 
         yield return new WaitForSeconds(.25f);
         isMoving = true;
-        sliceObject.transform.DOMoveX(targetPositionX, 2f).OnComplete(()=>
+        sliceObject.transform.DOMoveX(targetPositionX, .5f).OnComplete(()=>
         {
             ui.SetActive(isGameOver);
         });

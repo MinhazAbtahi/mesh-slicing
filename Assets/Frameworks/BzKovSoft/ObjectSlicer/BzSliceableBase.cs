@@ -9,6 +9,7 @@ using System.Threading;
 using BzKovSoft.ObjectSlicer;
 using BzKovSoft.ObjectSlicer.EventHandlers;
 using UnityEngine.Profiling;
+using Debug = UnityEngine.Debug;
 
 namespace BzKovSoft.ObjectSlicer
 {
@@ -67,8 +68,9 @@ namespace BzKovSoft.ObjectSlicer
 		/// <param name="addData">You can pass any object. You will </param>
 		/// <returns>Returns true if pre-slice conditions was succeeded and task was added to the queue</returns>
 		private void StartSlice(BzSliceTryData sliceTryData, Action<BzSliceTryResult> callBack)
-		{
-			Renderer[] renderers = GetRenderers(gameObject);
+        {
+            
+            Renderer[] renderers = GetRenderers(gameObject);
 			SliceTryItem[] items = new SliceTryItem[renderers.Length];
 
 			for (int i = 0; i < renderers.Length; i++)
@@ -92,8 +94,8 @@ namespace BzKovSoft.ObjectSlicer
 				sliceTryItem.meshDissector = meshDissector;
 				items[i] = sliceTryItem;
 			}
-
-			SliceTry sliceTry = new SliceTry();
+            
+            SliceTry sliceTry = new SliceTry();
 			sliceTry.items = items;
 			sliceTry.callBack = callBack;
 			sliceTry.sliceData = sliceTryData;
@@ -102,13 +104,17 @@ namespace BzKovSoft.ObjectSlicer
 			{
 				StartWorker(WorkForWorker, sliceTry);
 				_sliceTrys.Enqueue(sliceTry);
-			}
+                 Debug.Log("Asynchronously ");
+               
+            }
 			else
 			{
 				Work(sliceTry);
 				SliceTryFinished(sliceTry);
-			}
-		}
+                Debug.Log("Asynchronously not");
+            }
+           
+        }
 
 		protected abstract AdapterAndMesh GetAdapterAndMesh(Renderer renderer);
 
@@ -179,7 +185,8 @@ namespace BzKovSoft.ObjectSlicer
 
 		void Update()
 		{
-			Profiler.BeginSample("GetFinishedTask");
+           
+            Profiler.BeginSample("GetFinishedTask");
 			var sliceTry = GetFinishedTask();
 			Profiler.EndSample();
 
@@ -239,6 +246,7 @@ namespace BzKovSoft.ObjectSlicer
 
 		private BzSliceTryResult ApplyChanges(SliceTry sliceTry)
         {
+            Debug.Log("ApplyChanges");
             // duplicate object
             GameObject resultObjNeg, resultObjPos;
             GetNewObjects(out resultObjNeg, out resultObjPos);
@@ -325,22 +333,29 @@ namespace BzKovSoft.ObjectSlicer
 
 		public void Slice(Plane plane, int sliceId, Action<BzSliceTryResult> callBack)
 		{
-			if (this == null)	// if this component was destroied
+
+           
+            if (this == null)	// if this component was destroied
 				return;
 
 			float currentSliceTime = Time.time;
+            
+       
 
-			// we should prevent slicing same object:
-			// - if _delayBetweenSlices was not exceeded
-			// - with the same sliceId
-			if ((sliceId == 0 & _lastSliceTime + _delayBetweenSlices > currentSliceTime) |
+            // we should prevent slicing same object:
+            // - if _delayBetweenSlices was not exceeded
+            // - with the same sliceId
+            if ((sliceId == 0 & _lastSliceTime + _delayBetweenSlices > currentSliceTime) |
 				(sliceId != 0 & _sliceId == sliceId))
 			{
-				return;
-			}
+               
+                return;
+               
+            }
+           
 
-			// exit if it have LazyActionRunner
-			if (GetComponent<LazyActionRunner>() != null)
+            // exit if it have LazyActionRunner
+            if (GetComponent<LazyActionRunner>() != null)
 				return;
 
 			_lastSliceTime = currentSliceTime;

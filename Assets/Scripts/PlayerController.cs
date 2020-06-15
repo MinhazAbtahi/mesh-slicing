@@ -33,9 +33,18 @@ public class PlayerController : MonoBehaviour
     private float smoothing = 0.05f;
     private bool firsMove;
 
+    public bool sowrdUp=true;
+    public bool sowrdDown=false;
+
     private void Start()
     {
         currentSpeed = speed;
+#if UNITY_EDITOR
+        currentSpeed = 30;  
+        
+#endif
+
+      
         bladeTransform = _blade.transform;
         knife = _blade.GetComponentInChildren<BzKnife>();
     }
@@ -87,6 +96,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             currentSpeed = speed;
+#if UNITY_EDITOR
+            currentSpeed = 30;
+
+#endif
+
             KnifeUp();
         }
     }
@@ -119,7 +133,7 @@ public class PlayerController : MonoBehaviour
         bladeTransform.DOMoveY(minY, duration);
     }
 
-    private void KnifeUp()
+    public void KnifeUp()
     {
         bladeTransform.DOKill();
         bladeTransform.DOMoveY(maxY, duration/2f).SetEase(Ease.OutBack).OnComplete(()=>

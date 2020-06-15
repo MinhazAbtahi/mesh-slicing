@@ -10,6 +10,7 @@ namespace BzKovSoft.ObjectSlicerSamples
 	public class BzKnife : MonoBehaviour
 	{
         public PlayerController playerController;
+        public GameObject sliceobject;
 
 		public int SliceID { get; private set; }
 		Vector3 _prevPos;
@@ -46,11 +47,28 @@ namespace BzKovSoft.ObjectSlicerSamples
 
         private void OnTriggerEnter(Collider other)
         {
+            //Debug.Log("kinfe lagse "+ other.tag + " er sathe");
+
+
+
+
             if (other.tag == "Object")
             {
                 playerController.objectManager.StopMoving();
                 //playerController.currentSpeed = playerController.currentSpeed / 2;
+                //Debug.Log("object thamay rakhse");
+                sliceobject = other.gameObject;
             }
+
+            if (other.tag == "table")
+            {
+                //playerController.sowrdDown = true;
+                sliceobject.GetComponent<KnifeSliceableAsync>().knifedowTriggered();
+                //playerController.KnifeUp();
+            }
+
         }
+
+       
     }
 }

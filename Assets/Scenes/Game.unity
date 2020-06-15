@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -96,7 +96,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: c884c0d31db44a647ad3872329088570,
     type: 2}
   m_UseShadowmask: 1
@@ -168,7 +167,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -261,7 +259,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -354,7 +351,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -546,7 +542,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -639,7 +634,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -741,6 +735,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silceable: 0
+  knife: {fileID: 0}
 --- !u!114 &389101418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,7 +809,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -919,7 +914,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1034,6 +1028,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silceable: 0
+  knife: {fileID: 0}
 --- !u!114 &449441009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,7 +1102,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1257,7 +1252,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1350,7 +1344,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1603,6 +1596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silceable: 0
+  knife: {fileID: 0}
 --- !u!114 &600115960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1675,7 +1670,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1839,6 +1833,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silceable: 0
+  knife: {fileID: 0}
 --- !u!114 &678811461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1911,7 +1907,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2004,7 +1999,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2136,7 +2130,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2208,6 +2201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silceable: 0
+  knife: {fileID: 0}
 --- !u!114 &960689094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2329,7 +2324,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2436,7 +2430,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50
+  field of view: 37.6
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2559,9 +2553,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092211857}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 9
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 0.89254385, b: 0.7688679, a: 1}
   m_Intensity: 1.2
   m_Range: 10
@@ -2608,7 +2601,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 8.559424e-39, y: 7.2156034e+22, z: 0.00000066070714,
+    w: 1.7077752e+19}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2787,7 +2781,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2894,7 +2887,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2978,6 +2970,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silceable: 0
+  knife: {fileID: 0}
 --- !u!114 &1402993358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3050,7 +3044,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3175,7 +3168,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3343,7 +3335,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3438,9 +3429,11 @@ MonoBehaviour:
   maxY: 10.5
   minY: 7.5
   duration: 1
-  speed: 2
+  speed: 1.5
   currentSpeed: 10
   smoothing: 1
+  sowrdUp: 1
+  sowrdDown: 0
 --- !u!1 &1768228283
 GameObject:
   m_ObjectHideFlags: 0
@@ -3457,8 +3450,8 @@ GameObject:
   - component: {fileID: 1768228288}
   - component: {fileID: 1768228287}
   - component: {fileID: 1768228286}
-  - component: {fileID: 1768228285}
   - component: {fileID: 1768228284}
+  - component: {fileID: 1768228294}
   m_Layer: 0
   m_Name: HamBurger
   m_TagString: Object
@@ -3479,24 +3472,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0975494, y: 0.9520307, z: 1.1292002}
   m_Center: {x: -0.000000059604645, y: 0.47601536, z: -0.000000029802322}
---- !u!114 &1768228285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768228283}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e3c2b43ef25cde46a13e20e45e525f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Presets: 2
-  m_EffectIntensity: 0.5
-  m_Damping: 0.9
-  m_Mass: 8
-  m_Stiffness: 0.5
-  sleeping: 1
 --- !u!114 &1768228286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3509,6 +3484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silceable: 0
+  knife: {fileID: 0}
 --- !u!114 &1768228287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3549,7 +3526,7 @@ MonoBehaviour:
   _lastSliceTime: -3.4028235e+38
   _defaultSliceMaterial: {fileID: 2100000, guid: 585ab62c9207a4e40b8a8d6ccf55d5c1,
     type: 2}
-  _asynchronously: 1
+  _asynchronously: 0
   _delayBetweenSlices: 1
 --- !u!54 &1768228290
 Rigidbody:
@@ -3581,7 +3558,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3628,6 +3604,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1768228294
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768228283}
+  m_Material: {fileID: 13400000, guid: 4f46d2bf78001c04ca88c358d2150118, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: faa8b5b910f46e64e98b2a548ac7a277, type: 3}
 --- !u!1 &1819629458
 GameObject:
   m_ObjectHideFlags: 0
@@ -3696,6 +3686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silceable: 0
+  knife: {fileID: 0}
 --- !u!114 &1819629462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3768,7 +3760,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3883,6 +3874,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silceable: 0
+  knife: {fileID: 0}
 --- !u!114 &1835441319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3955,7 +3948,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4048,7 +4040,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4141,7 +4132,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4234,7 +4224,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4293,9 +4282,10 @@ GameObject:
   - component: {fileID: 2064685609}
   - component: {fileID: 2064685608}
   - component: {fileID: 2064685607}
-  m_Layer: 9
+  - component: {fileID: 2064685610}
+  m_Layer: 0
   m_Name: TableTop
-  m_TagString: Untagged
+  m_TagString: table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4325,8 +4315,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.2634583, z: 1}
+  m_Center: {x: 0, y: 0.13172913, z: 0}
 --- !u!23 &2064685608
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4341,7 +4331,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4374,6 +4363,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064685605}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &2064685610
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064685605}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &2130002675
 GameObject:
   m_ObjectHideFlags: 0
@@ -4442,6 +4447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silceable: 0
+  knife: {fileID: 0}
 --- !u!114 &2130002679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4514,7 +4521,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4574,6 +4580,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7527907444058174718, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: m_Name
+      value: Knife
+      objectReference: {fileID: 0}
     - target: {fileID: 7498057968325165439, guid: 281738528392d27499aadbecae17d04a,
         type: 3}
       propertyPath: m_Mesh
@@ -4674,15 +4685,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7527907444058174718, guid: 281738528392d27499aadbecae17d04a,
-        type: 3}
-      propertyPath: m_Name
-      value: Knife
-      objectReference: {fileID: 0}
     - target: {fileID: 7633312221373486860, guid: 281738528392d27499aadbecae17d04a,
         type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1700079100}
+    - target: {fileID: 7633312221373486860, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610771912673226972, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7507292729554896814, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 281738528392d27499aadbecae17d04a, type: 3}
