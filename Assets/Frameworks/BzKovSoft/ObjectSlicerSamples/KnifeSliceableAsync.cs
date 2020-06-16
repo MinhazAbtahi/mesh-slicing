@@ -34,7 +34,7 @@ namespace BzKovSoft.ObjectSlicerSamples
 
 
             //StartCoroutine(Slice(knife));
-            //SliceInstant(knife);
+            SliceInstant(knife);
             silceable = true;
 
         }
@@ -72,6 +72,12 @@ namespace BzKovSoft.ObjectSlicerSamples
                
             }
 		}
+     
+        //sakib modify rigidbody call
+        public void kinematicoffCall()
+        {
+            GameObject.FindGameObjectWithTag("objectManager").GetComponent<ObjectManager>().repairRigidTrigger();
+        }
 
         private void SliceInstant(BzKnife knife)
         {
@@ -98,7 +104,8 @@ namespace BzKovSoft.ObjectSlicerSamples
 			Vector3 proj = Vector3.Project(distToObject, knife.BladeDirection);
 
 			Vector3 collisionPoint = knife.Origin + proj;
-			return collisionPoint;
+            
+            return collisionPoint;
 		}
 	}
 }

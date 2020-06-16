@@ -104,14 +104,14 @@ namespace BzKovSoft.ObjectSlicer
 			{
 				StartWorker(WorkForWorker, sliceTry);
 				_sliceTrys.Enqueue(sliceTry);
-                 Debug.Log("Asynchronously ");
+                 //Debug.Log("Asynchronously ");
                
             }
 			else
 			{
 				Work(sliceTry);
 				SliceTryFinished(sliceTry);
-                Debug.Log("Asynchronously not");
+                //Debug.Log("Asynchronously not");
             }
            
         }
@@ -227,7 +227,10 @@ namespace BzKovSoft.ObjectSlicer
 			{
 				result.outObjectNeg.GetComponent<LazyActionRunner>().RunLazyActions();
 				result.outObjectPos.GetComponent<LazyActionRunner>().RunLazyActions();
-			}
+
+                //sakib modify neg to child
+                result.outObjectNeg.transform.parent = result.outObjectPos.transform;
+            }
 
 			if (sliceTry.callBack != null)
 			{
@@ -235,7 +238,9 @@ namespace BzKovSoft.ObjectSlicer
 				sliceTry.callBack(result);
 				Profiler.EndSample();
 			}
-		}
+
+            
+        }
 
         private void InvokeEvents(GameObject resultNeg, GameObject resultPos)
 		{
@@ -254,6 +259,8 @@ namespace BzKovSoft.ObjectSlicer
             var renderersPos = GetRenderers(resultObjPos);
             resultObjNeg.AddComponent<LazyActionRunner>();
             resultObjPos.AddComponent<LazyActionRunner>();
+
+           
 
             if (renderersNeg.Length != renderersPos.Length |
                 renderersNeg.Length != sliceTry.items.Length)
@@ -298,6 +305,8 @@ namespace BzKovSoft.ObjectSlicer
 
             result.outObjectNeg = resultObjNeg;
             result.outObjectPos = resultObjPos;
+
+           
 
             return result;
         }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Object
   - table
+  - objectManager
   layers:
   - Default
   - TransparentFX

@@ -11,13 +11,21 @@ using System.Collections;
 
 namespace BzKovSoft.ObjectSlicer
 {
-	class StaticComponentManager : IComponentManager
+  
+    class StaticComponentManager : IComponentManager
 	{
 		protected readonly GameObject _originalObject;
 		protected readonly Plane _plane;
 		protected readonly ColliderSliceResult[] _colliderResults;
 
-		public bool Success { get { return _colliderResults != null; } }
+       
+
+
+        //sakib modify list for rigidbody objects
+        public List<GameObject> slicePieces;
+        public GameObject objectManager;
+
+        public bool Success { get { return _colliderResults != null; } }
 
 		public StaticComponentManager(GameObject go, Plane plane, Collider[] colliders)
 		{
@@ -47,7 +55,14 @@ namespace BzKovSoft.ObjectSlicer
 			RepairColliders(resultObjNeg, resultObjPos, cldrsA, cldrsB);
             RepairRigidbody(resultObjNeg);
             AddModifier(resultObjNeg);
+
+            //sakib modification for reference to obejctmanager
+            objectManager = GameObject.FindGameObjectWithTag("objectManager");
+            objectManager.GetComponent<ObjectManager>().addSlices(resultObjNeg);
+            slicePieces = objectManager.GetComponent<ObjectManager>().slicePieces;
         }
+
+       
 
         private void AddModifier(GameObject resultObjNeg)
         {
@@ -61,8 +76,8 @@ namespace BzKovSoft.ObjectSlicer
         private void RepairRigidbody(GameObject resultObjNeg)
         {
             Rigidbody resultNegRigidbody = resultObjNeg.GetComponent<Rigidbody>();
-            resultNegRigidbody.isKinematic = false;
-            resultNegRigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            resultNegRigidbody.isKinematic = true;
+            //resultNegRigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
             //resultObjNeg.AddComponent<JellyCube.RubberEffect>();
             //resultNegRigidbody.AddForceAtPosition(Vector3.right * 2.5f, -Vector3.down * 2f, ForceMode.VelocityChange);

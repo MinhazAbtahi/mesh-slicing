@@ -36,9 +36,17 @@ public class PlayerController : MonoBehaviour
     public bool sowrdUp=true;
     public bool sowrdDown=false;
 
+    private GameObject slice;
+    public float bendAngle;
+    public float prevbendAngle;
+    public bool bendingOn;
+
     private void Start()
     {
-        currentSpeed = speed;
+        bendAngle = 0;
+        prevbendAngle = 0;
+        bendingOn = false;
+       currentSpeed = speed;
 #if UNITY_EDITOR
         currentSpeed = 30;  
         
@@ -91,6 +99,20 @@ public class PlayerController : MonoBehaviour
             {
                 bladeTransform.position = new Vector3(bladeTransform.position.x, minY, bladeTransform.position.z);
             }
+
+
+
+            //bend value check
+            if (/*moveY < 0 &&*/ bendingOn)
+            {
+                bendAngle += moveY;
+            }
+
+            //bend sakib
+            bendcheckAndBend();
+
+
+
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -123,6 +145,31 @@ public class PlayerController : MonoBehaviour
 
             transformB.rotation = /*Camera.main.transform.rotation **/ r;
             yield return null;
+        }
+    }
+
+    private void bendcheckAndBend()
+    {
+        //sakib modify bending
+        if (objectManager.slicePieces.Count != 0)
+        {
+            //foreach (GameObject slice in objectManager.slicePieces)
+            //{
+            //    if (bendAngle < prevbendAngle)
+            //    {
+            //        slice.GetComponent<MeshBend>().angle = bendAngle;
+            //        //Debug.Log("bend ammount"+ (bendAngle));
+            //        prevbendAngle = bendAngle;
+            //    }
+            //}
+            //}
+            if (bendAngle < prevbendAngle)
+            {
+                objectManager.slicePieces[objectManager.slicePieces.Count - 1].GetComponent<MeshBend>().angle = bendAngle;
+                //Debug.Log("bend ammount"+ (bendAngle));
+                prevbendAngle = bendAngle;
+            }
+
         }
     }
 

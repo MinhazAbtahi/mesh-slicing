@@ -23,11 +23,13 @@ public class ObjectManager : MonoBehaviour
     public int levelsCount = 0;
 
     public GameObject ui;
+    //sakib modify list for rigidbody objects
+    public List<GameObject> slicePieces;
 
     // Start is called before the first frame update
     void Start()
     {
-        levelsCount = PlayerPrefs.GetInt("LevelsCount", 0);
+        levelsCount =2 /*PlayerPrefs.GetInt("LevelsCount", 0)*/;
         sliceObject = sliceObjects[levelsCount];
         sliceObject.transform.position = new Vector3(0f, sliceObject.transform.position.y, 0f);
         sliceObject.SetActive(true);
@@ -41,6 +43,10 @@ public class ObjectManager : MonoBehaviour
         step = sliceObject.transform.localScale.x / 5f;
     }
 
+    public void addSlices(GameObject slice)
+    {
+        slicePieces.Add(slice);
+    }
    
     public void MoveForward()
     {
@@ -51,6 +57,25 @@ public class ObjectManager : MonoBehaviour
             StartCoroutine(MoveRoutine());
 
         }
+    }
+
+    //sakib call for kinematic trigger on slice objects
+    public void repairRigidTrigger()
+    {
+
+        //foreach (GameObject slice in slicePieces)
+        //{
+        //    Rigidbody rb = slice.GetComponent<Rigidbody>();
+        //    rb.isKinematic = false;
+           
+        //}
+        Rigidbody rblastPiece = slicePieces[slicePieces.Count-1].GetComponent<Rigidbody>();
+        rblastPiece.isKinematic = false;
+        
+        rblastPiece.AddRelativeTorque(0, 0, -25);
+        rblastPiece.AddForce(rblastPiece.mass * 20, 0, 0);
+
+
     }
 
     public void StopMoving()
