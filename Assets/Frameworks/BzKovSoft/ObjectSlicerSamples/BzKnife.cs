@@ -54,38 +54,51 @@ namespace BzKovSoft.ObjectSlicerSamples
 
             if (other.tag == "Object")
             {
-                playerController.objectManager.StopMoving();
+
+              
+                //playerController.objectManager.StopMoving();
                 //playerController.currentSpeed = playerController.currentSpeed / 2;
                 //Debug.Log("object thamay rakhse");
                 sliceobject = other.gameObject;
+
                 playerController.bendingOn = true;
-               
+
+
+
+
+
 
             }
 
             if (other.tag == "table")
             {
+
               
                 playerController.sowrdDown = true;
                 //sliceobject.GetComponent<KnifeSliceableAsync>().knifedowTriggered();
                 //playerController.KnifeUp();
                 sliceobject.GetComponent<KnifeSliceableAsync>().kinematicoffCall();
+                playerController.bendingOn = false;
                 playerController.bendAngle = 0;
                 playerController.prevbendAngle = 0;
+                playerController.bendAngleForSqure = 0;
+               
+                playerController.objectManager.slicePieces = new List<GameObject>();
+
 
             }
 
         }
-         private void OnTriggerExit(Collider other)
-         {
+        private void OnTriggerExit(Collider other)
+        {
             if (other.tag == "Object")
             {
-                
+
                 playerController.bendingOn = false;
 
 
             }
-         }
+        }
 
 
 

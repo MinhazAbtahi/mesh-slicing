@@ -59,7 +59,8 @@ namespace BzKovSoft.ObjectSlicer
             //sakib modification for reference to obejctmanager
             objectManager = GameObject.FindGameObjectWithTag("objectManager");
             objectManager.GetComponent<ObjectManager>().addSlices(resultObjNeg);
-            slicePieces = objectManager.GetComponent<ObjectManager>().slicePieces;
+            //objectManager.GetComponent<ObjectManager>().pc.bendingOn = true;
+            //slicePieces = objectManager.GetComponent<ObjectManager>().slicePieces;
         }
 
        

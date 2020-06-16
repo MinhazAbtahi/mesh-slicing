@@ -1193,6 +1193,7 @@ MonoBehaviour:
   levelsCount: 0
   ui: {fileID: 1479696244}
   slicePieces: []
+  pc: {fileID: 1700079100}
 --- !u!4 &490878777
 Transform:
   m_ObjectHideFlags: 0
@@ -3437,6 +3438,7 @@ MonoBehaviour:
   bendAngle: 0
   prevbendAngle: 0
   bendingOn: 0
+  bendAngleForSqure: 0
 --- !u!1 &1768228283
 GameObject:
   m_ObjectHideFlags: 0

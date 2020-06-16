@@ -228,7 +228,7 @@ namespace BzKovSoft.ObjectSlicer
 				result.outObjectNeg.GetComponent<LazyActionRunner>().RunLazyActions();
 				result.outObjectPos.GetComponent<LazyActionRunner>().RunLazyActions();
 
-                //sakib modify neg to child
+                //sakib modify neg to child parent
                 result.outObjectNeg.transform.parent = result.outObjectPos.transform;
             }
 

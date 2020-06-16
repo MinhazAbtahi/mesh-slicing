@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using BzKovSoft.ObjectSlicerSamples;
 using DG.Tweening;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,10 +41,12 @@ public class PlayerController : MonoBehaviour
     public float bendAngle;
     public float prevbendAngle;
     public bool bendingOn;
+    public float bendAngleForSqure;
 
     private void Start()
     {
         bendAngle = 0;
+        bendAngleForSqure = 0;
         prevbendAngle = 0;
         bendingOn = false;
        currentSpeed = speed;
@@ -101,15 +104,17 @@ public class PlayerController : MonoBehaviour
             }
 
 
-
+            Debug.Log(deviation.y);
             //bend value check
-            if (/*moveY < 0 &&*/ bendingOn)
+            if (deviation.y <= 0 && bendingOn)
             {
-                bendAngle += moveY;
+                bendAngle += deviation.y;
+                bendAngleForSqure = bendAngle*2f;
+                //bend sakib
+                bendcheckAndBend();
             }
 
-            //bend sakib
-            bendcheckAndBend();
+           
 
 
 
@@ -150,8 +155,10 @@ public class PlayerController : MonoBehaviour
 
     private void bendcheckAndBend()
     {
+        int count= objectManager.slicePieces.Count;
+        
         //sakib modify bending
-        if (objectManager.slicePieces.Count != 0)
+        if (count != 0)
         {
             //foreach (GameObject slice in objectManager.slicePieces)
             //{
@@ -163,12 +170,24 @@ public class PlayerController : MonoBehaviour
             //    }
             //}
             //}
-            if (bendAngle < prevbendAngle)
+            if (bendAngleForSqure < prevbendAngle)
             {
-                objectManager.slicePieces[objectManager.slicePieces.Count - 1].GetComponent<MeshBend>().angle = bendAngle;
+                objectManager.slicePieces[count - 1].GetComponent<MeshBend>().angle = Mathf.Pow(bendAngleForSqure, 5) ;
                 //Debug.Log("bend ammount"+ (bendAngle));
-                prevbendAngle = bendAngle;
+                prevbendAngle = bendAngleForSqure;
             }
+
+            //foreach (GameObject slice in objectManager.slicePieces)
+            //{
+            //    if (bendAngleForSqure < prevbendAngle && slice!= objectManager.slicePieces[count - 1])
+            //    {
+            //        slice.GetComponent<MeshBend>().angle -= bendAngleForSqure;
+            //        //Debug.Log("bend ammount"+ (bendAngle));
+                    
+            //    }
+            //}
+            //prevbendAngle = bendAngleForSqure;
+
 
         }
     }
@@ -187,5 +206,10 @@ public class PlayerController : MonoBehaviour
         {
             objectManager.MoveForward();
         });
+
+        bendAngle = 0;
+        bendAngleForSqure = 0;
+        prevbendAngle = 0;
+        //objectManager.slicePieces=new List<GameObject>();
     }
 }

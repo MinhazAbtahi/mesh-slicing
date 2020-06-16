@@ -15,7 +15,7 @@ public class MeshBend : MeshModifier
 	[HideInInspector]
 	public float	dir			= 0.0f;
 	//[HideInInspector]
-	public BendAxis	axis		= BendAxis.X;
+	public BendAxis	axis		= BendAxis.Z;
 	[HideInInspector]
 	public bool		doRegion	= false;
 	[HideInInspector]

@@ -25,6 +25,7 @@ public class ObjectManager : MonoBehaviour
     public GameObject ui;
     //sakib modify list for rigidbody objects
     public List<GameObject> slicePieces;
+    public PlayerController pc;
 
     // Start is called before the first frame update
     void Start()
@@ -63,17 +64,19 @@ public class ObjectManager : MonoBehaviour
     public void repairRigidTrigger()
     {
 
-        //foreach (GameObject slice in slicePieces)
-        //{
-        //    Rigidbody rb = slice.GetComponent<Rigidbody>();
-        //    rb.isKinematic = false;
-           
-        //}
-        Rigidbody rblastPiece = slicePieces[slicePieces.Count-1].GetComponent<Rigidbody>();
-        rblastPiece.isKinematic = false;
-        
-        rblastPiece.AddRelativeTorque(0, 0, -25);
-        rblastPiece.AddForce(rblastPiece.mass * 20, 0, 0);
+        foreach (GameObject slice in slicePieces)
+        {
+            Rigidbody rb = slice.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            //rb.AddRelativeTorque(0, 0, -25);
+            rb.AddForce(rb.mass * 20, 0, 0);
+
+        }
+        //Rigidbody rblastPiece = slicePieces[slicePieces.Count - 1].GetComponent<Rigidbody>();
+        ////rblastPiece.isKinematic = false;
+
+        //rblastPiece.AddRelativeTorque(0, 0, -25);
+        //rblastPiece.AddForce(rblastPiece.mass * 20, 0, 0);
 
 
     }
