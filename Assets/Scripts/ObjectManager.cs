@@ -25,6 +25,7 @@ public class ObjectManager : MonoBehaviour
     public GameObject ui;
     //sakib modify list for rigidbody objects
     public List<GameObject> slicePieces;
+    public List<GameObject> oldSlicePieces;
     public PlayerController pc;
 
     // Start is called before the first frame update
@@ -32,7 +33,7 @@ public class ObjectManager : MonoBehaviour
     {
         levelsCount =2 /*PlayerPrefs.GetInt("LevelsCount", 0)*/;
         sliceObject = sliceObjects[levelsCount];
-        sliceObject.transform.position = new Vector3(0f, sliceObject.transform.position.y, 0f);
+        sliceObject.transform.position = new Vector3(0f, sliceObject.transform.position.y, 0);
         sliceObject.SetActive(true);
 
         sliceObject.transform.DOMoveX(targetPositionX, 0).OnComplete(()=>
@@ -51,7 +52,7 @@ public class ObjectManager : MonoBehaviour
    
     public void MoveForward()
     {
-        if (totalMove <= 5)
+        if (totalMove <= 5000)
         {
             targetPositionX += step;
             //targetPositionX += sliceObject.transform.localScale.x;
@@ -72,6 +73,17 @@ public class ObjectManager : MonoBehaviour
             rb.AddForce(rb.mass * 20, 0, 0);
 
         }
+        //old cuts rigidbody
+        //moving old cuts
+        foreach (GameObject slice in oldSlicePieces)
+        {
+            Rigidbody rb = slice.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            //rb.AddRelativeTorque(0, 0, -25);
+            rb.AddForce(rb.mass * 20, 0, 0);
+
+        }
+
         //Rigidbody rblastPiece = slicePieces[slicePieces.Count - 1].GetComponent<Rigidbody>();
         ////rblastPiece.isKinematic = false;
 
@@ -84,13 +96,13 @@ public class ObjectManager : MonoBehaviour
     public void StopMoving()
     {
         sliceObject.transform.DOKill();
-        //StopAllCoroutines();
+        StopAllCoroutines();
     }
 
     private IEnumerator MoveRoutine()
     {
         ++totalMove;
-        if (totalMove >= 6)
+        if (totalMove >= 60)
         {
             isGameStart = false;
             isGameOver = true;
@@ -102,9 +114,18 @@ public class ObjectManager : MonoBehaviour
             PlayerPrefs.SetInt("LevelsCount", levelsCount);
         }
 
-        yield return new WaitForSeconds(.25f);
+        //yield return new WaitForSeconds(.25f);
+        yield return null;
+
         isMoving = true;
-        sliceObject.transform.DOMoveX(targetPositionX, .5f).OnComplete(()=>
+        //moving old cuts
+        foreach (GameObject slice in oldSlicePieces)
+        {
+            slice.transform.DOMoveX(targetPositionX, 5f);
+
+        }
+
+        sliceObject.transform.DOMoveX(targetPositionX, 5f).OnComplete(()=>
         {
             ui.SetActive(isGameOver);
         });

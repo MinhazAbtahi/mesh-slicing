@@ -42,16 +42,18 @@ public class PlayerController : MonoBehaviour
     public float prevbendAngle;
     public bool bendingOn;
     public float bendAngleForSqure;
+    public float prevdeviation;
 
     private void Start()
     {
+        prevdeviation = 0;
         bendAngle = 0;
         bendAngleForSqure = 0;
         prevbendAngle = 0;
         bendingOn = false;
        currentSpeed = speed;
 #if UNITY_EDITOR
-        currentSpeed = 30;  
+        currentSpeed = 20;  
         
 #endif
 
@@ -77,14 +79,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(!firsMove)
-            {
-                firsMove = true;
-                objectManager.MoveForward();
-            }
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    if(!firsMove)
+        //    {
+        //        firsMove = true;
+        //        objectManager.MoveForward();
+        //    }
+        //}
 
         if (Input.GetMouseButton(0))
         {
@@ -104,9 +106,9 @@ public class PlayerController : MonoBehaviour
             }
 
 
-            Debug.Log(deviation.y);
+            
             //bend value check
-            if (deviation.y <= 0 && bendingOn)
+            if (/*deviation.y <= 0 &&*/ bendingOn)
             {
                 bendAngle += deviation.y;
                 bendAngleForSqure = bendAngle*2f;
@@ -114,7 +116,23 @@ public class PlayerController : MonoBehaviour
                 bendcheckAndBend();
             }
 
-           
+
+
+            //knife moving up cause object move
+            if(moveY > prevdeviation && !bendingOn)
+            {
+                KnifeUp();
+                prevdeviation = moveY;
+            }
+            //stop object if knife going down
+            //if(deviation.y < prevdeviation&& !bendingOn)
+            //{
+            //    stopObjectmovement();
+            //    prevdeviation = deviation.y;
+
+            //}
+
+
 
 
 
@@ -128,7 +146,8 @@ public class PlayerController : MonoBehaviour
 
 #endif
 
-            KnifeUp();
+            //KnifeUp();
+            knifeAutoMoveUp();
         }
     }
 
@@ -172,8 +191,21 @@ public class PlayerController : MonoBehaviour
             //}
             if (bendAngleForSqure < prevbendAngle)
             {
-                objectManager.slicePieces[count - 1].GetComponent<MeshBend>().angle = Mathf.Pow(bendAngleForSqure, 5) ;
-                //Debug.Log("bend ammount"+ (bendAngle));
+                //ager piece
+                if (objectManager.oldSlicePieces.Count!=0)
+                {
+                    foreach (GameObject slice in objectManager.oldSlicePieces)
+                    {
+                        //objectManager.slicePieces[count - 1].transform.GetChild(0).GetComponent<MeshBend>().angle += bendAngleForSqure/5;
+                        slice.GetComponent<MeshBend>().angle += bendAngle / 3;
+
+                    }
+
+                    
+
+                }
+                objectManager.slicePieces[count - 1].GetComponent<MeshBend>().angle = Mathf.Pow(bendAngleForSqure, 5);
+              
                 prevbendAngle = bendAngleForSqure;
             }
 
@@ -201,15 +233,40 @@ public class PlayerController : MonoBehaviour
 
     public void KnifeUp()
     {
-        bladeTransform.DOKill();
-        bladeTransform.DOMoveY(maxY, duration/2f).SetEase(Ease.OutBack).OnComplete(()=>
+        //setting prev piece ref
+        if (objectManager.slicePieces.Count != 0)
         {
-            objectManager.MoveForward();
-        });
+            objectManager.oldSlicePieces.Add(objectManager.slicePieces[0]);
+        }
+        objectManager.slicePieces = new List<GameObject>();
+
+        //bladeTransform.DOKill();
+        //bladeTransform.DOMoveY(maxY, duration/2f).SetEase(Ease.OutBack).OnComplete(()=>
+        //{
+        //    objectManager.MoveForward();
+        //});
+
+        //new edit sakib for object movement
+        objectManager.MoveForward();
+
 
         bendAngle = 0;
         bendAngleForSqure = 0;
         prevbendAngle = 0;
-        //objectManager.slicePieces=new List<GameObject>();
+
+        
+    }
+
+
+    public void knifeAutoMoveUp()
+    {
+        bladeTransform.DOKill();
+        bladeTransform.DOMoveY(maxY, duration / 2f).SetEase(Ease.OutBack);
+    }
+
+    public void stopObjectmovement()
+    {
+        objectManager.StopMoving();
+        //bladeTransform.DOKill();
     }
 }

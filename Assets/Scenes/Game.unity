@@ -1185,7 +1185,7 @@ MonoBehaviour:
   - {fileID: 1835441315}
   - {fileID: 1819629458}
   sliceObject: {fileID: 1835441315}
-  targetPositionX: 4.6
+  targetPositionX: 4.8
   step: 0
   totalMove: 0
   isGameOver: 0
@@ -1193,6 +1193,7 @@ MonoBehaviour:
   levelsCount: 0
   ui: {fileID: 1479696244}
   slicePieces: []
+  oldSlicePieces: []
   pc: {fileID: 1700079100}
 --- !u!4 &490878777
 Transform:
@@ -1791,7 +1792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &678811458
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2603,7 +2604,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 4e-45}
+  m_BoundingSphereOverride: {x: 6, y: 6, z: -7, w: 6}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3430,7 +3431,7 @@ MonoBehaviour:
   maxY: 10.5
   minY: 7.5
   duration: 1
-  speed: 1.5
+  speed: 1
   currentSpeed: 10
   smoothing: 1
   sowrdUp: 1
@@ -4700,14 +4701,54 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7633312221373486860, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: sliceobject
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7610771912673226972, guid: 281738528392d27499aadbecae17d04a,
         type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7610771912673226972, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.9731168
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610771912673226972, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.00000016284001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610771912673226972, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.4592796
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610771912673226972, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.011837066
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610771912673226972, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.1707455
+      objectReference: {fileID: 0}
     - target: {fileID: 7507292729554896814, guid: 281738528392d27499aadbecae17d04a,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7507292729554896814, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7507292729554896814, guid: 281738528392d27499aadbecae17d04a,
+        type: 3}
+      propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

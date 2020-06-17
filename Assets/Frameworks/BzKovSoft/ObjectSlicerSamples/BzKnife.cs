@@ -83,8 +83,8 @@ namespace BzKovSoft.ObjectSlicerSamples
                 playerController.prevbendAngle = 0;
                 playerController.bendAngleForSqure = 0;
                
-                playerController.objectManager.slicePieces = new List<GameObject>();
-
+                //playerController.objectManager.slicePieces = new List<GameObject>();
+                playerController.objectManager.oldSlicePieces = new List<GameObject>();
 
             }
 
