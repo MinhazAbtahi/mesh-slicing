@@ -55,8 +55,8 @@ namespace BzKovSoft.ObjectSlicerSamples
             if (other.tag == "Object")
             {
 
-              
-                //playerController.objectManager.StopMoving();
+
+                playerController.objectManager.StopMoving();
                 //playerController.currentSpeed = playerController.currentSpeed / 2;
                 //Debug.Log("object thamay rakhse");
                 sliceobject = other.gameObject;
@@ -73,18 +73,25 @@ namespace BzKovSoft.ObjectSlicerSamples
             if (other.tag == "table")
             {
 
-              
+                
                 playerController.sowrdDown = true;
                 //sliceobject.GetComponent<KnifeSliceableAsync>().knifedowTriggered();
                 //playerController.KnifeUp();
-                sliceobject.GetComponent<KnifeSliceableAsync>().kinematicoffCall();
-                playerController.bendingOn = false;
+               
+                //playerController.bendingOn = false;
                 playerController.bendAngle = 0;
                 playerController.prevbendAngle = 0;
                 playerController.bendAngleForSqure = 0;
-               
-                //playerController.objectManager.slicePieces = new List<GameObject>();
-                playerController.objectManager.oldSlicePieces = new List<GameObject>();
+                playerController.objectManager.repairRigidTrigger();
+
+                playerController.objectManager.slicePieces = new List<GameObject>();
+                //playerController.objectManager.oldSlicePieces = new List<GameObject>();
+
+                //playerController.knifeAutoMoveUp();
+#if !UNITY_EDITOR && UNITY_ANDROID
+
+            Vibration.Vibrate(80);
+#endif
 
             }
 
@@ -95,8 +102,7 @@ namespace BzKovSoft.ObjectSlicerSamples
             {
 
                 playerController.bendingOn = false;
-
-
+                playerController.prevdeviation = playerController.swordposY;
             }
         }
 

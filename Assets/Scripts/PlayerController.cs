@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float duration = .5f;
     private bool gone;
-    private float moveY;
+    public float moveY;
     [SerializeField]
     private float speed = 10f;
     [SerializeField]
@@ -43,10 +43,11 @@ public class PlayerController : MonoBehaviour
     public bool bendingOn;
     public float bendAngleForSqure;
     public float prevdeviation;
+    public float swordposY;
 
     private void Start()
     {
-        prevdeviation = 0;
+       
         bendAngle = 0;
         bendAngleForSqure = 0;
         prevbendAngle = 0;
@@ -60,10 +61,15 @@ public class PlayerController : MonoBehaviour
       
         bladeTransform = _blade.transform;
         knife = _blade.GetComponentInChildren<BzKnife>();
+        swordposY = bladeTransform.position.y;
+        prevdeviation = swordposY;
     }
 
     void Update()
     {
+        //swordpos update
+        swordposY= bladeTransform.position.y;
+
         if (objectManager.isGameOver)
         {
             if (!gone)
@@ -96,7 +102,7 @@ public class PlayerController : MonoBehaviour
             moveY = Mathf.Lerp(moveY, y, smoothing);
             Vector3 deviation = new Vector3(0f, moveY * Time.deltaTime * currentSpeed, 0f);
             bladeTransform.position += deviation;
-            if (bladeTransform.position.y > 10.5f)
+            if (bladeTransform.position.y > 9.25f)
             {
                 bladeTransform.position = new Vector3(bladeTransform.position.x, maxY, bladeTransform.position.z);
             }
@@ -114,23 +120,22 @@ public class PlayerController : MonoBehaviour
                 bendAngleForSqure = bendAngle*2f;
                 //bend sakib
                 bendcheckAndBend();
+
             }
 
 
 
             //knife moving up cause object move
-            if(moveY > prevdeviation && !bendingOn)
+            if (swordposY > prevdeviation && !bendingOn)
             {
                 KnifeUp();
-                prevdeviation = moveY;
+                prevdeviation = swordposY;
             }
-            //stop object if knife going down
-            //if(deviation.y < prevdeviation&& !bendingOn)
-            //{
-            //    stopObjectmovement();
-            //    prevdeviation = deviation.y;
-
-            //}
+            else if (swordposY < prevdeviation && !bendingOn)
+            {
+                stopObjectmovement();
+            }
+           
 
 
 
@@ -205,7 +210,10 @@ public class PlayerController : MonoBehaviour
 
                 }
                 objectManager.slicePieces[count - 1].GetComponent<MeshBend>().angle = Mathf.Pow(bendAngleForSqure, 5);
-              
+#if !UNITY_EDITOR && UNITY_ANDROID
+
+            Vibration.Vibrate(30);
+#endif
                 prevbendAngle = bendAngleForSqure;
             }
 
@@ -246,13 +254,17 @@ public class PlayerController : MonoBehaviour
         //    objectManager.MoveForward();
         //});
 
-        //new edit sakib for object movement
-        objectManager.MoveForward();
-
 
         bendAngle = 0;
         bendAngleForSqure = 0;
         prevbendAngle = 0;
+
+        //new edit sakib for object movement
+        objectManager.isMoving = true;
+        //objectManager.MoveForward();
+
+
+     
 
         
     }
@@ -261,7 +273,7 @@ public class PlayerController : MonoBehaviour
     public void knifeAutoMoveUp()
     {
         bladeTransform.DOKill();
-        bladeTransform.DOMoveY(maxY, duration / 2f).SetEase(Ease.OutBack);
+        bladeTransform.DOMoveY(maxY-.4f, duration / 2f).SetEase(Ease.OutBack);
     }
 
     public void stopObjectmovement()

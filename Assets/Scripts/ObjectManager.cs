@@ -15,8 +15,10 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     private float targetPositionX;
     [SerializeField]
+    private float StartPositionX;
+    [SerializeField]
     private float step;
-    private bool isMoving;
+    public bool isMoving;
     public int totalMove = 0;
     public bool isGameOver;
     public bool isGameStart;
@@ -36,13 +38,21 @@ public class ObjectManager : MonoBehaviour
         sliceObject.transform.position = new Vector3(0f, sliceObject.transform.position.y, 0);
         sliceObject.SetActive(true);
 
-        sliceObject.transform.DOMoveX(targetPositionX, 0).OnComplete(()=>
+        sliceObject.transform.DOMoveX(StartPositionX, 1f).OnComplete(()=>
         {
             //sliceObject.GetComponent<RubberEffect>().enabled = true;
             //sliceObject.GetComponent<RubberEffect>()
             isGameStart = true;
         });
         step = sliceObject.transform.localScale.x / 5f;
+    }
+
+    private void FixedUpdate()
+    {
+        if (isMoving)
+        {
+            StartCoroutine(MoveRoutine());
+        }
     }
 
     public void addSlices(GameObject slice)
@@ -52,12 +62,17 @@ public class ObjectManager : MonoBehaviour
    
     public void MoveForward()
     {
-        if (totalMove <= 5000)
-        {
-            targetPositionX += step;
-            //targetPositionX += sliceObject.transform.localScale.x;
-            StartCoroutine(MoveRoutine());
+        //if (totalMove <= 5000)
+        //{
+        //targetPositionX += step;
+        //targetPositionX += sliceObject.transform.localScale.x;
+        //StartCoroutine(MoveRoutine());
 
+        //}
+        //sakib changes movement
+        if (isMoving)
+        {
+            StartCoroutine(MoveRoutine());
         }
     }
 
@@ -83,7 +98,7 @@ public class ObjectManager : MonoBehaviour
             rb.AddForce(rb.mass * 20, 0, 0);
 
         }
-
+        oldSlicePieces= new List<GameObject>();
         //Rigidbody rblastPiece = slicePieces[slicePieces.Count - 1].GetComponent<Rigidbody>();
         ////rblastPiece.isKinematic = false;
 
@@ -95,14 +110,33 @@ public class ObjectManager : MonoBehaviour
 
     public void StopMoving()
     {
+        isMoving = false;
         sliceObject.transform.DOKill();
+        //stop all cutouts
+        foreach (GameObject slice in oldSlicePieces)
+        {
+            slice.transform.DOKill();
+
+        }
         StopAllCoroutines();
     }
 
     private IEnumerator MoveRoutine()
     {
-        ++totalMove;
-        if (totalMove >= 60)
+        //++totalMove;
+        //if (totalMove >= 60)
+        //{
+        //    isGameStart = false;
+        //    isGameOver = true;
+        //    ++levelsCount;
+        //    if (levelsCount >= sliceObjects.Count)
+        //    {
+        //        levelsCount = levelsCount % (sliceObjects.Count);
+        //    }
+        //    PlayerPrefs.SetInt("LevelsCount", levelsCount);
+        //}
+
+        if (sliceObject.transform.position.x >= 5.6f)
         {
             isGameStart = false;
             isGameOver = true;
@@ -112,23 +146,28 @@ public class ObjectManager : MonoBehaviour
                 levelsCount = levelsCount % (sliceObjects.Count);
             }
             PlayerPrefs.SetInt("LevelsCount", levelsCount);
+            ui.SetActive(isGameOver);
         }
 
         //yield return new WaitForSeconds(.25f);
-        yield return null;
+        //yield return null;
+        isMoving = false;
 
-        isMoving = true;
         //moving old cuts
         foreach (GameObject slice in oldSlicePieces)
         {
-            slice.transform.DOMoveX(targetPositionX, 5f);
+            slice.transform.DOMoveX(targetPositionX, 20f);
 
         }
+        sliceObject.transform.DOMoveX(targetPositionX, 20f);
 
-        sliceObject.transform.DOMoveX(targetPositionX, 5f).OnComplete(()=>
-        {
-            ui.SetActive(isGameOver);
-        });
+        yield return new WaitForSeconds(.1f);
+        isMoving = true;
+
+        //sliceObject.transform.DOMoveX(targetPositionX, 5f).OnComplete(()=>
+        //{
+        //    ui.SetActive(isGameOver);
+        //});
     }
 
     public void Reload()

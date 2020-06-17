@@ -73,11 +73,7 @@ namespace BzKovSoft.ObjectSlicerSamples
             }
 		}
      
-        //sakib modify rigidbody call
-        public void kinematicoffCall()
-        {
-            GameObject.FindGameObjectWithTag("objectManager").GetComponent<ObjectManager>().repairRigidTrigger();
-        }
+       
 
         private void SliceInstant(BzKnife knife)
         {

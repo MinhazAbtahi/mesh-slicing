@@ -77,6 +77,7 @@ namespace BzKovSoft.ObjectSlicer
         private void RepairRigidbody(GameObject resultObjNeg)
         {
             Rigidbody resultNegRigidbody = resultObjNeg.GetComponent<Rigidbody>();
+           
             resultNegRigidbody.isKinematic = true;
             //resultNegRigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
