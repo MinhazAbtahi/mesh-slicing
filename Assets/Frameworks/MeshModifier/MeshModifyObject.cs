@@ -12,7 +12,7 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class MeshModifyObject : MeshModifiers
 {
-	[HideInInspector]
+	//[HideInInspector]
 	public Mesh cachedMesh;
 	public bool InvisibleUpdate	= false;
 	bool		visible			= true;

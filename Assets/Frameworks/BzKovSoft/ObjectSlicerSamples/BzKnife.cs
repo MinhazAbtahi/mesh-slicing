@@ -87,7 +87,7 @@ namespace BzKovSoft.ObjectSlicerSamples
                 playerController.objectManager.slicePieces = new List<GameObject>();
                 //playerController.objectManager.oldSlicePieces = new List<GameObject>();
 
-                //playerController.knifeAutoMoveUp();
+                playerController.knifeAutoMoveUp();
 #if !UNITY_EDITOR && UNITY_ANDROID
 
             Vibration.Vibrate(80);
@@ -100,7 +100,7 @@ namespace BzKovSoft.ObjectSlicerSamples
         {
             if (other.tag == "Object")
             {
-
+              
                 playerController.bendingOn = false;
                 playerController.prevdeviation = playerController.swordposY;
             }

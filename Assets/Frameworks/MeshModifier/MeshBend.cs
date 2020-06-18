@@ -10,18 +10,22 @@ public enum BendAxis
 
 public class MeshBend : MeshModifier
 {
-	//[HideInInspector]
-	public float	angle		= 0.0f;
-	[HideInInspector]
-	public float	dir			= 0.0f;
+    //[HideInInspector]
+    [Range(-90f, 90f)]
+    public float	angle		= 0.0f;
+    //[HideInInspector]
+    [Range(-90f, 90f)]
+    public float	dir			= 0.0f;
 	//[HideInInspector]
 	public BendAxis	axis		= BendAxis.Z;
-	[HideInInspector]
+	//[HideInInspector]
 	public bool		doRegion	= false;
-	[HideInInspector]
-	public float	from		= 0.0f;
-	[HideInInspector]
-	public float	to			= 0.0f;
+    //[HideInInspector]
+    [Range(-90f, 90f)]
+    public float	from		= 0.0f;
+    //[HideInInspector]
+    [Range(-90f, 90f)]
+    public float	to			= 0.0f;
 	Matrix4x4		mat			= new Matrix4x4();
 	Matrix4x4		tmAbove		= new Matrix4x4();
 	Matrix4x4		tmBelow		= new Matrix4x4();
@@ -34,13 +38,13 @@ public class MeshBend : MeshModifier
 	public override void SetValues(MeshModifier mod)
 	{
 		MeshBend bm = (MeshBend)mod;
-		angle = bm.angle;
-		dir = bm.dir;
-		axis = bm.axis;
-		doRegion = bm.doRegion;
-		from = bm.from;
-		to = bm.to;
-	}
+        angle = bm.angle;
+        dir = bm.dir;
+        axis = bm.axis;
+        doRegion = bm.doRegion;
+        from = bm.from;
+        to = bm.to;
+    }
 
 	void CalcR(BendAxis axis, float ang)
 	{

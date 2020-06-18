@@ -134,6 +134,7 @@ public class PlayerController : MonoBehaviour
             else if (swordposY < prevdeviation && !bendingOn)
             {
                 stopObjectmovement();
+                prevdeviation = swordposY;
             }
            
 

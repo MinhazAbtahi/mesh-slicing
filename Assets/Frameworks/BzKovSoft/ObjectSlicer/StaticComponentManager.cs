@@ -67,8 +67,12 @@ namespace BzKovSoft.ObjectSlicer
 
         private void AddModifier(GameObject resultObjNeg)
         {
+            //MeshModifyObject bendModify = resultObjNeg.AddComponent<MeshModifyObject>();
+            //MeshModifiers bendModify = resultObjNeg.AddComponent<MeshModifyObject>();
+
             //resultObjNeg.AddComponent<MegaModifier>();
             MeshBend bend = resultObjNeg.AddComponent<MeshBend>();
+            //MeshBend bend = resultObjNeg.GetComponent<MeshBend>();
             bend.axis = BendAxis.Z;
             
             // TO-DO: Procedurally bend angles based on knife input 
