@@ -50,7 +50,7 @@ public class MeshModifier : MonoBehaviour
 	public Matrix4x4	tm				= new Matrix4x4();
 	[System.NonSerialized]
 	public Matrix4x4	invtm			= new Matrix4x4();
-	[HideInInspector]
+	//[HideInInspector]
 	public MeshBoundingBox		bbox			= new MeshBoundingBox();
 	[HideInInspector]
 	public Vector3[]	corners			= new Vector3[8];

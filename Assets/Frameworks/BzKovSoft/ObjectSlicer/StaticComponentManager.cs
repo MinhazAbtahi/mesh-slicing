@@ -52,7 +52,8 @@ namespace BzKovSoft.ObjectSlicer
 		{
 			var cldrsA = new List<Collider>();
 			var cldrsB = new List<Collider>();
-			RepairColliders(resultObjNeg, resultObjPos, cldrsA, cldrsB);
+           
+            RepairColliders(resultObjNeg, resultObjPos, cldrsA, cldrsB);
             RepairRigidbody(resultObjNeg);
             AddModifier(resultObjNeg);
 
@@ -67,14 +68,28 @@ namespace BzKovSoft.ObjectSlicer
 
         private void AddModifier(GameObject resultObjNeg)
         {
+
             //MeshModifyObject bendModify = resultObjNeg.AddComponent<MeshModifyObject>();
-            //MeshModifiers bendModify = resultObjNeg.AddComponent<MeshModifyObject>();
+            //MeshModifiers bendModify = resultObjNeg.AddComponent<MeshModifiers>();
 
             //resultObjNeg.AddComponent<MegaModifier>();
-            MeshBend bend = resultObjNeg.AddComponent<MeshBend>();
+            //resultObjNeg.GetComponent<MeshFilter>().mesh.RecalculateBounds();
+            //resultObjNeg.GetComponent<MeshFilter>().mesh.RecalculateNormals();
+            //resultObjNeg.GetComponent<MeshFilter>().mesh.RecalculateTangents();
+           
+            //MeshBend bend = resultObjNeg.AddComponent<MeshBend>();
+
+
             //MeshBend bend = resultObjNeg.GetComponent<MeshBend>();
-            bend.axis = BendAxis.Z;
-            
+            //bend.ModEnabled = true;
+
+            //bend.ModUpdate();
+            ////bend.doRegion = true;
+            //bend.ResetOffset();
+           
+            //bend.axis = BendAxis.Z;
+           
+
             // TO-DO: Procedurally bend angles based on knife input 
         }
 

@@ -69,7 +69,7 @@ public class MeshModifiers : MonoBehaviour
 {
 	[HideInInspector]
 	public Bounds			bbox			= new Bounds();
-	public bool				recalcnorms		= true;
+	public bool				recalcnorms		= false;
 	public NormalMethod	NormalMethod	= NormalMethod.Custom;
 	public bool				recalcbounds	= false;
 	public bool				recalcCollider	= false;

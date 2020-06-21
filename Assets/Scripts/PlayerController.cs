@@ -203,17 +203,18 @@ public class PlayerController : MonoBehaviour
                     foreach (GameObject slice in objectManager.oldSlicePieces)
                     {
                         //objectManager.slicePieces[count - 1].transform.GetChild(0).GetComponent<MeshBend>().angle += bendAngleForSqure/5;
-                        slice.GetComponent<MeshBend>().angle += bendAngle / 3;
-
+                        //slice.GetComponent<MeshBend>().angle += bendAngle / 3;
+                        slice.GetComponent<CurveShapeDeformer>().Multiplier -= -.05f/*bendAngle / 20*/;
                     }
 
-                    
+
 
                 }
-                objectManager.slicePieces[count - 1].GetComponent<MeshBend>().angle = Mathf.Pow(bendAngleForSqure, 5);
+                //objectManager.slicePieces[count - 1].GetComponent<MeshBend>().angle = Mathf.Pow(bendAngleForSqure, 5);
+                objectManager.slicePieces[count - 1].GetComponent<CurveShapeDeformer>().Multiplier = /*-bendAngleForSqure*6f;*/Mathf.Pow(bendAngleForSqure*2, 2);
 #if !UNITY_EDITOR && UNITY_ANDROID
 
-            Vibration.Vibrate(30);
+            Vibration.Vibrate(20);
 #endif
                 prevbendAngle = bendAngleForSqure;
             }

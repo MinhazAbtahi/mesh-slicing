@@ -146,9 +146,9 @@ public class MeshModifyObject : MeshModifiers
 		//BuildNormalMapping(cachedMesh, false);
 		mods = GetComponents<MeshModifier>();
 
-		Array.Sort(mods, CompareOrder);
+        Array.Sort(mods, CompareOrder);
 
-		for ( int i = 0; i < mods.Length; i++ )
+        for ( int i = 0; i < mods.Length; i++ )
 		{
 			if ( mods[i] != null )
 			{

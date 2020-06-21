@@ -38,31 +38,31 @@ public class MeshBend : MeshModifier
 	public override void SetValues(MeshModifier mod)
 	{
 		MeshBend bm = (MeshBend)mod;
-        angle = bm.angle;
-        dir = bm.dir;
-        axis = bm.axis;
-        doRegion = bm.doRegion;
-        from = bm.from;
-        to = bm.to;
-    }
+		angle = bm.angle;
+		dir = bm.dir;
+		axis = bm.axis;
+		doRegion = bm.doRegion;
+		from = bm.from;
+		to = bm.to;
+	}
 
 	void CalcR(BendAxis axis, float ang)
 	{
 		float len = 0.0f;
 
-		if ( !doRegion )
-		{
-			switch ( axis )
-			{
-				case BendAxis.X: len = bbox.max.x - bbox.min.x; break;
-				case BendAxis.Z: len = bbox.max.y - bbox.min.y; break;
-				case BendAxis.Y: len = bbox.max.z - bbox.min.z; break;
-			}
-		}
-		else
-			len = to - from;
+        if (!doRegion)
+        {
+            switch (axis)
+            {
+                case BendAxis.X: len = bbox.max.x - bbox.min.x; break;
+                case BendAxis.Z: len = bbox.max.y - bbox.min.y; break;
+                case BendAxis.Y: len = bbox.max.z - bbox.min.z; break;
+            }
+        }
+        else
+            len = to - from;
 
-		if ( Mathf.Abs(ang) < 0.000001f )
+        if ( Mathf.Abs(ang) < 0.000001f )
 			r = 0.0f;
 		else
 			r = len / ang;
