@@ -15,10 +15,10 @@ public class SineDeformer : MonoBehaviour {
 	[Tooltip("changes the formula of the deformer slightly, only works withthe Y-Axis")]
 	public bool predictable = true;
 	[Tooltip("the amount of sine waves")]
-    [Range(0, 1)]
+    [Range(-100, 100)]
     public float Frequency =1.75f;
 	[Tooltip("cycle throught the waves")]
-    [Range(0, 1)]
+    [Range(-100, 100)]
     public float Phaze = 1.0f;
 	[Tooltip("Waves Height multiplier")]
 	public float PeakMultiplier=1.0f;

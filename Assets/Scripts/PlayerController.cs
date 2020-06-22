@@ -220,8 +220,12 @@ public class PlayerController : MonoBehaviour
                 {
                     massCurrent = .15f;
                 }
+                float bendValue = Mathf.Pow(bendAngleForSqure * 2 / (massCurrent * 15), 2);
+                float bendValueNopower = bendAngleForSqure * 2 / (massCurrent * 15);
                 //objectManager.slicePieces[count - 1].GetComponent<MeshBend>().angle = Mathf.Pow(bendAngleForSqure, 5);
-                CurrentSlice.GetComponent<CurveShapeDeformer>().Multiplier = /*-bendAngleForSqure*6f;*/Mathf.Pow(bendAngleForSqure* 2/(massCurrent*10), 2);
+                CurrentSlice.GetComponent<CurveShapeDeformer>().Multiplier = /*-bendAngleForSqure*6f;*/ bendValue;
+                CurrentSlice.transform.rotation=(Quaternion.Euler(0,0, -bendValue * 4.5f));
+                CurrentSlice.transform.position += new Vector3(-bendValue / 2000, bendValue / 900, 0);
 #if !UNITY_EDITOR && UNITY_ANDROID
 
             Vibration.Vibrate(20);
