@@ -27,8 +27,8 @@ namespace BzKovSoft.ObjectSlicer.EventHandlers
 
 			Rigidbody rigidO = original.GetComponent<Rigidbody>();
 
-			Rigidbody rigidA = resultNeg.GetComponent<Rigidbody>();
-			Rigidbody rigidB = resultPos.GetComponent<Rigidbody>();
+			Rigidbody rigidA = resultPos.GetComponent<Rigidbody>();
+			Rigidbody rigidB = resultNeg.GetComponent<Rigidbody>();
 
 		    float massO = rigidO.mass;
             Vector3 centerOfMassA;

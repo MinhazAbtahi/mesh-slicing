@@ -55,7 +55,7 @@ namespace BzKovSoft.ObjectSlicer
            
             RepairColliders(resultObjNeg, resultObjPos, cldrsA, cldrsB);
             RepairRigidbody(resultObjNeg);
-            AddModifier(resultObjNeg);
+            //AddModifier(resultObjNeg);
 
             //sakib modification for reference to obejctmanager
             objectManager = GameObject.FindGameObjectWithTag("objectManager");

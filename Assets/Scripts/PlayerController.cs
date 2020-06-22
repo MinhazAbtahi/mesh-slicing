@@ -210,8 +210,18 @@ public class PlayerController : MonoBehaviour
 
 
                 }
+                GameObject CurrentSlice = objectManager.slicePieces[count - 1];
+                float massCurrent = CurrentSlice.GetComponent<Rigidbody>().mass;
+                if (massCurrent < .075f)
+                {
+                    massCurrent = .075f;
+                }
+                else if(massCurrent > .15f)
+                {
+                    massCurrent = .15f;
+                }
                 //objectManager.slicePieces[count - 1].GetComponent<MeshBend>().angle = Mathf.Pow(bendAngleForSqure, 5);
-                objectManager.slicePieces[count - 1].GetComponent<CurveShapeDeformer>().Multiplier = /*-bendAngleForSqure*6f;*/Mathf.Pow(bendAngleForSqure*2, 2);
+                CurrentSlice.GetComponent<CurveShapeDeformer>().Multiplier = /*-bendAngleForSqure*6f;*/Mathf.Pow(bendAngleForSqure* 2/(massCurrent*10), 2);
 #if !UNITY_EDITOR && UNITY_ANDROID
 
             Vibration.Vibrate(20);

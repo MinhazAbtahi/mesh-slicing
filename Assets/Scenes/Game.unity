@@ -1234,6 +1234,7 @@ MonoBehaviour:
   - {fileID: 449441005}
   - {fileID: 1835441315}
   - {fileID: 1819629458}
+  - {fileID: 960689085}
   sliceObject: {fileID: 1835441315}
   targetPositionX: 6
   StartPositionX: 4.8
@@ -2149,6 +2150,7 @@ GameObject:
   - component: {fileID: 960689094}
   - component: {fileID: 960689093}
   - component: {fileID: 960689095}
+  - component: {fileID: 960689096}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Object
@@ -2219,7 +2221,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0eea0fbd4c74b694baa3d34ed743894b, type: 2}
+  - {fileID: 2100000, guid: 7ecce1eebd9e7ec41bdcadd77c79af87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2269,7 +2271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960689085}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.98, z: 0}
+  m_LocalPosition: {x: 0.216, y: 3.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2319,6 +2321,73 @@ MonoBehaviour:
   m_Mass: 1
   m_Stiffness: 0.2
   sleeping: 1
+--- !u!114 &960689096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960689085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef13d1c3dd7754a4c88fc01dc43ee494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeformAxis: 0
+  Refinecurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.5003052
+      value: -0.0015563965
+      inSlope: 0.0070683523
+      outSlope: 0.0070683523
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09752478
+    - serializedVersion: 3
+      time: 0.9781959
+      value: 0.023018308
+      inSlope: 0.06525858
+      outSlope: 0.13742152
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.102229334
+      outWeight: 0.47021714
+    - serializedVersion: 3
+      time: 1.2946744
+      value: 0.07600958
+      inSlope: 0.268807
+      outSlope: 0.54810643
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.577477
+      outWeight: 0.3945377
+    - serializedVersion: 3
+      time: 1.5437677
+      value: 0.29197842
+      inSlope: 2.0352883
+      outSlope: 2.5366275
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.10305521
+      outWeight: 0.50195843
+    - serializedVersion: 3
+      time: 1.5785433
+      value: 0.41248727
+      inSlope: 4.8148737
+      outSlope: 1.4729373
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.4833727
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Multiplier: 0
+  RecalculateNormals: 1
+  isStatic: 0
 --- !u!1 &969350536
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,7 +2756,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: NaN, z: NaN, w: 0}
+  m_BoundingSphereOverride: {x: 1.737105e+9, y: 4.3470432e-20, z: -1.4071715, w: 4e-45}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
