@@ -64,16 +64,18 @@ public class CurveShapeDeformer : MonoBehaviour {
 			z = originalVertices [i].z;
 			float normalized = (y - smallestY) / (largestY - smallestY);
 			float curveValue = Refinecurve.Evaluate (normalized);
-
-			float new_x = x;
+          
+            float new_x = x;
 			float new_y = y;
 			float new_z = z;
 
 			switch (DeformAxis) 
 			{
 			case Axis.X:
-				new_x = x + curveValue * Multiplier;
-				break;
+				new_x = x + curveValue*1.75f * Multiplier;
+                    new_y = y - curveValue * Multiplier;
+
+                    break;
 			case Axis.Y:
 				new_y = y + curveValue * Multiplier;
 				break;

@@ -33,7 +33,7 @@ public class ObjectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelsCount =0 /*PlayerPrefs.GetInt("LevelsCount", 0)*/;
+        levelsCount =6 /*PlayerPrefs.GetInt("LevelsCount", 0)*/;
         sliceObject = sliceObjects[levelsCount];
         sliceObject.transform.position = new Vector3(0f, sliceObject.transform.position.y, 0);
         sliceObject.SetActive(true);

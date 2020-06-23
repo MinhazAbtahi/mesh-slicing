@@ -197,6 +197,23 @@ public class PlayerController : MonoBehaviour
             //}
             if (bendAngleForSqure < prevbendAngle)
             {
+                GameObject CurrentSlice = objectManager.slicePieces[count - 1];
+                float massCurrent = CurrentSlice.GetComponent<Rigidbody>().mass;
+                if (massCurrent < .075f)
+                {
+                    massCurrent = .075f;
+                }
+                else if (massCurrent > .15f)
+                {
+                    massCurrent = .15f;
+                }
+                float bendValue = Mathf.Pow(bendAngleForSqure * 2 / (massCurrent * 15), 2);
+                //float bendValueNopower = bendAngleForSqure * 2 / (massCurrent * 15);
+                //objectManager.slicePieces[count - 1].GetComponent<MeshBend>().angle = Mathf.Pow(bendAngleForSqure, 5);
+                CurrentSlice.GetComponent<CurveShapeDeformer>().Multiplier = /*-bendAngleForSqure*6f;*/ bendValue;
+                //CurrentSlice.transform.rotation=(Quaternion.Euler(0,0, -bendValue * 4.5f));
+                //CurrentSlice.transform.position += new Vector3(-bendValue / 2000, bendValue / 900, 0);
+
                 //ager piece
                 if (objectManager.oldSlicePieces.Count!=0)
                 {
@@ -204,32 +221,28 @@ public class PlayerController : MonoBehaviour
                     {
                         //objectManager.slicePieces[count - 1].transform.GetChild(0).GetComponent<MeshBend>().angle += bendAngleForSqure/5;
                         //slice.GetComponent<MeshBend>().angle += bendAngle / 3;
-                        slice.GetComponent<CurveShapeDeformer>().Multiplier -= -.05f/*bendAngle / 20*/;
+                        if (slice.GetComponent<CurveShapeDeformer>().Multiplier< bendValue)
+                        {
+                            slice.GetComponent<CurveShapeDeformer>().Multiplier = bendValue;
+                        }
+                        else
+                        {
+                            slice.GetComponent<CurveShapeDeformer>().Multiplier -= -.05f/*bendAngle / 20*/;
+                        }
+                       
+                       
                     }
 
 
 
                 }
-                GameObject CurrentSlice = objectManager.slicePieces[count - 1];
-                float massCurrent = CurrentSlice.GetComponent<Rigidbody>().mass;
-                if (massCurrent < .075f)
-                {
-                    massCurrent = .075f;
-                }
-                else if(massCurrent > .15f)
-                {
-                    massCurrent = .15f;
-                }
-                float bendValue = Mathf.Pow(bendAngleForSqure * 2 / (massCurrent * 10), 2);
-                //float bendValueNopower = bendAngleForSqure * 2 / (massCurrent * 15);
-                //objectManager.slicePieces[count - 1].GetComponent<MeshBend>().angle = Mathf.Pow(bendAngleForSqure, 5);
-                CurrentSlice.GetComponent<CurveShapeDeformer>().Multiplier = /*-bendAngleForSqure*6f;*/ bendValue;
-                //CurrentSlice.transform.rotation=(Quaternion.Euler(0,0, -bendValue * 4.5f));
-                //CurrentSlice.transform.position += new Vector3(-bendValue / 2000, bendValue / 900, 0);
-#if !UNITY_EDITOR && UNITY_ANDROID
+                
+              
+               
+//#if !UNITY_EDITOR && UNITY_ANDROID
 
-            Vibration.Vibrate(20);
-#endif
+//            Vibration.Vibrate(20);
+//#endif
                 prevbendAngle = bendAngleForSqure;
             }
 
