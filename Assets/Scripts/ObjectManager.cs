@@ -33,7 +33,7 @@ public class ObjectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelsCount =6 /*PlayerPrefs.GetInt("LevelsCount", 0)*/;
+        levelsCount = PlayerPrefs.GetInt("LevelsCount", 0)/*0*/;
         sliceObject = sliceObjects[levelsCount];
         sliceObject.transform.position = new Vector3(0f, sliceObject.transform.position.y, 0);
         sliceObject.SetActive(true);
@@ -136,16 +136,11 @@ public class ObjectManager : MonoBehaviour
         //    PlayerPrefs.SetInt("LevelsCount", levelsCount);
         //}
 
-        if (sliceObject.transform.position.x >= 5.6f)
+        if (sliceObject.transform.position.x >= targetPositionX-.5f)
         {
             isGameStart = false;
             isGameOver = true;
-            ++levelsCount;
-            if (levelsCount >= sliceObjects.Count)
-            {
-                levelsCount = levelsCount % (sliceObjects.Count);
-            }
-            PlayerPrefs.SetInt("LevelsCount", levelsCount);
+           
             ui.SetActive(isGameOver);
         }
 
@@ -172,6 +167,13 @@ public class ObjectManager : MonoBehaviour
 
     public void Reload()
     {
+        ++levelsCount;
+        if (levelsCount >= sliceObjects.Count)
+        {
+            levelsCount = levelsCount % (sliceObjects.Count);
+        }
+        PlayerPrefs.SetInt("LevelsCount", levelsCount);
+        Debug.Log("LevelsCount=" + levelsCount);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

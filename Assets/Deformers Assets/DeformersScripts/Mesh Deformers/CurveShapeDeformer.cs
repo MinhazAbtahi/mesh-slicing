@@ -7,8 +7,10 @@ public class CurveShapeDeformer : MonoBehaviour {
 	public enum Axis {X,Y,Z};
 	[Tooltip("Choose the Axis you want the deformer to work on")]
 	public Axis DeformAxis = Axis.Y;
-	[Tooltip("Use this curve to define the deformation")]
+    
+    [Tooltip("Use this curve to define the deformation")]
 	public AnimationCurve Refinecurve ;
+
 	[Tooltip("Deformation Multiplier")]
 	public float Multiplier = 1.0f;
 	[Tooltip("Allow unity to re-calculate the normals, sometimes its needed, others no")]
@@ -77,11 +79,13 @@ public class CurveShapeDeformer : MonoBehaviour {
 
                     break;
 			case Axis.Y:
-				new_y = y + curveValue * Multiplier;
-				break;
+                    new_z = z + curveValue  * Multiplier;
+                    new_y = y + curveValue * 1.75f * Multiplier;
+                    break;
 			case Axis.Z:
-				new_z = z + curveValue * Multiplier;
-				break;
+                    new_z = z + curveValue * 2/8 * Multiplier;
+                    new_y = y - curveValue /8 *Multiplier;
+                    break;
 			}
 
 			Vector3 newvertPos = new Vector3 (new_x, new_y, new_z);

@@ -72,8 +72,8 @@ namespace BzKovSoft.ObjectSlicerSamples
 
             if (other.tag == "table")
             {
-
-                
+                playerController.sowrdUp = true;
+                playerController.playEndMusic();
                 playerController.sowrdDown = true;
                 //sliceobject.GetComponent<KnifeSliceableAsync>().knifedowTriggered();
                 //playerController.KnifeUp();
@@ -100,7 +100,7 @@ namespace BzKovSoft.ObjectSlicerSamples
         {
             if (other.tag == "Object")
             {
-              
+               
                 playerController.bendingOn = false;
                 playerController.prevdeviation = playerController.swordposY;
             }

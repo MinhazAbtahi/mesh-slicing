@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private float smoothing = 0.05f;
     private bool firsMove;
 
-    public bool sowrdUp=true;
+    public bool sowrdUp=false;
     public bool sowrdDown=false;
 
     private GameObject slice;
@@ -45,16 +45,22 @@ public class PlayerController : MonoBehaviour
     public float prevdeviation;
     public float swordposY;
 
+
+    //adio
+    public AudioSource astart;
+    public AudioSource aend;
+    public bool sliceOn=false;
+
     private void Start()
     {
-       
+        sowrdUp = false;
         bendAngle = 0;
         bendAngleForSqure = 0;
         prevbendAngle = 0;
         bendingOn = false;
        currentSpeed = speed;
 #if UNITY_EDITOR
-        currentSpeed = 20;  
+        currentSpeed = 10;  
         
 #endif
 
@@ -94,7 +100,7 @@ public class PlayerController : MonoBehaviour
         //    }
         //}
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)&&!sowrdUp)
         {
             //knife.BeginNewSlice();
 
@@ -111,11 +117,12 @@ public class PlayerController : MonoBehaviour
                 bladeTransform.position = new Vector3(bladeTransform.position.x, minY, bladeTransform.position.z);
             }
 
-
             
+
             //bend value check
             if (/*deviation.y <= 0 &&*/ bendingOn)
             {
+                //playSliceMusic();
                 bendAngle += deviation.y;
                 bendAngleForSqure = bendAngle*2f;
                 //bend sakib
@@ -128,13 +135,17 @@ public class PlayerController : MonoBehaviour
             //knife moving up cause object move
             if (swordposY > prevdeviation && !bendingOn)
             {
+              
                 KnifeUp();
                 prevdeviation = swordposY;
+               
             }
             else if (swordposY < prevdeviation && !bendingOn)
             {
+                
                 stopObjectmovement();
                 prevdeviation = swordposY;
+                
             }
            
 
@@ -148,12 +159,18 @@ public class PlayerController : MonoBehaviour
         {
             currentSpeed = speed;
 #if UNITY_EDITOR
-            currentSpeed = 30;
+            currentSpeed = 10;
 
 #endif
 
             //KnifeUp();
             knifeAutoMoveUp();
+        }
+
+        if (sliceOn && !astart.isPlaying)
+        {
+            playSliceMusic();
+            sliceOn = false;
         }
     }
 
@@ -197,6 +214,8 @@ public class PlayerController : MonoBehaviour
             //}
             if (bendAngleForSqure < prevbendAngle)
             {
+               
+
                 GameObject CurrentSlice = objectManager.slicePieces[count - 1];
                 float massCurrent = CurrentSlice.GetComponent<Rigidbody>().mass;
                 if (massCurrent < .075f)
@@ -214,6 +233,8 @@ public class PlayerController : MonoBehaviour
                 //CurrentSlice.transform.rotation=(Quaternion.Euler(0,0, -bendValue * 4.5f));
                 //CurrentSlice.transform.position += new Vector3(-bendValue / 2000, bendValue / 900, 0);
 
+                sliceOn = true;
+
                 //ager piece
                 if (objectManager.oldSlicePieces.Count!=0)
                 {
@@ -227,7 +248,7 @@ public class PlayerController : MonoBehaviour
                         }
                         else
                         {
-                            slice.GetComponent<CurveShapeDeformer>().Multiplier -= -.05f/*bendAngle / 20*/;
+                            slice.GetComponent<CurveShapeDeformer>().Multiplier -= -.01f/*bendAngle / 20*/;
                         }
                        
                        
@@ -236,15 +257,23 @@ public class PlayerController : MonoBehaviour
 
 
                 }
-                
-              
-               
-//#if !UNITY_EDITOR && UNITY_ANDROID
 
-//            Vibration.Vibrate(20);
-//#endif
+                //sliceOn = true;
+                
+
+                //#if !UNITY_EDITOR && UNITY_ANDROID
+
+                //            Vibration.Vibrate(20);
+                //#endif
                 prevbendAngle = bendAngleForSqure;
             }
+
+            else if (bendAngleForSqure > prevbendAngle){
+                //Invoke("stopSliceMusic", 1);
+                stopSliceMusic();
+            }
+
+           
 
             //foreach (GameObject slice in objectManager.slicePieces)
             //{
@@ -263,6 +292,7 @@ public class PlayerController : MonoBehaviour
 
     private void KnifeDown()
     {
+        
         objectManager.StopMoving();
         bladeTransform.DOKill();
         bladeTransform.DOMoveY(minY, duration);
@@ -301,13 +331,31 @@ public class PlayerController : MonoBehaviour
 
     public void knifeAutoMoveUp()
     {
+      
         bladeTransform.DOKill();
-        bladeTransform.DOMoveY(maxY-.4f, duration / 2f).SetEase(Ease.OutBack);
+        bladeTransform.DOMoveY(maxY - .4f, duration / 2f).SetEase(Ease.OutBack).OnComplete(() =>
+          { sowrdUp = false; });
     }
 
     public void stopObjectmovement()
     {
         objectManager.StopMoving();
         //bladeTransform.DOKill();
+    }
+
+    public void playEndMusic()
+    {
+        aend.Play();
+        stopSliceMusic();
+        sliceOn = false;
+    }
+
+    public void playSliceMusic()
+    {
+        astart.Play(0);
+    }
+    public void stopSliceMusic()
+    {
+        astart.Stop();
     }
 }
